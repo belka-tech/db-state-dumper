@@ -1,0 +1,19 @@
+{
+    "name": "belka-tech/state-dumper",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "BelkaCar\\DbStateDumper\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.1",
+        "ext-pdo": "*",
+        "ext-curl": "*",
+        "ext-pcntl": "*",
+        "symfony/var-dumper": "^5.3",
+        "symfony/console": "^5.3",
+        "solodkiy/console-logger-with-time": "^0.1.3"
+    }
+}

@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use BelkaCar\DbStateDumper\Command\DbStateDumperCommand;
+use Symfony\Component\Console\Application;
+
+$application = new Application('state-dumper', '1.0.0');
+$command = new DbStateDumperCommand();
+
+$application->add($command);
+$application->setDefaultCommand($command->getName(), true);
+$application->run();
