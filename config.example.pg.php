@@ -5,8 +5,9 @@ return [
     'username' => 'login',
     'password' => 'secret',
     'queries' => [
-        'activity' => <<<SQL
-            SELECT pid, 
+        'activity' => <<<'SQL'
+            SELECT
+                pid, 
                 usename, 
                 datname, 
                 application_name, 
@@ -16,14 +17,14 @@ return [
                 query,  
                 backend_xid, 
                 query_start, 
-                to_char((now() - query_start), 'HH24:MI:SS') as query_start_time,  
-                to_char((now() - xact_start), 'HH24:MI:SS') as tr_start_time, 
+                to_char((now() - query_start), 'HH24:MI:SS') as query_start_time,
+                to_char((now() - xact_start), 'HH24:MI:SS') as tr_start_time,
                 client_addr
             FROM pg_stat_activity
             WHERE state != 'idle'
             ORDER BY now() - xact_start DESC;
             SQL,
-        'locks' => <<<SQL
+        'locks' => <<<'SQL'
             SELECT
               bl.pid  AS blocked_pid,
               ka.query AS blocking_statement,
